@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>魔方</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      html {
+        background-color: black;
+        overflow: hidden;
+      }
+      .container {
+        width: 900px;
+        height: 900px;
+        margin: 150px auto;
+        perspective: none;
+      }
+      .box {
+        width: 900px;
+        height: 900px;
+        transform-style: preserve-3d;
+        transform: rotateX(45deg) rotateY(45deg);
+        animation: a0 4s linear infinite;
+      }
+      @keyframes a0 {
+        0% {
+          transform: rotateX(0deg) rotateY(0deg);
+        }
+        100% {
+          transform: rotateX(360deg) rotateY(360deg);
+        }
+      }
+      .box-page {
+        width: 900px;
+        height: 900px;
+        position: absolute;
+        box-shadow: 2px 2px 20px gold;
+        transform-style: preserve-3d;
+      }
+      .top {
+        transform: translateZ(450px);
+      }
+      .left {
+        transform: translateX(-450px) rotateY(-90deg);
+      }
+      .bottom {
+        transform: translateZ(-450px) rotateY(180deg);
+      }
+      .right {
+        transform: translateX(450px) rotateY(90deg);
+      }
+      .before {
+        transform: translateY(450px) rotateX(-90deg);
+      }
+      .after {
+        transform: translateY(-450px) rotateX(90deg);
+      }
+      .box-page div:nth-child(1) {
+        animation: a1 4s ease-in-out infinite;
+      }
+      .box-page div:nth-child(2) {
+        animation: a1 4s ease-in-out infinite;
+        animation-delay: 0.2s;
+      }
+      .box-page div:nth-child(3) {
+        animation: a1 4s ease-in-out infinite;
+        animation-delay: 0.4s;
+      }
+      .box-page div:nth-child(4) {
+        animation: a1 4s ease-in-out infinite;
+        animation-delay: 0.6s;
+      }
+      .box-page div:nth-child(5) {
+        animation: a1 4s ease-in-out infinite;
+        animation-delay: 0.8s;
+      }
+      .box-page div:nth-child(6) {
+        animation: a1 4s ease-in-out infinite;
+        animation-delay: 1s;
+      }
+      .box-page div:nth-child(7) {
+        animation: a1 4s ease-in-out infinite;
+        animation-delay: 1.2s;
+      }
+      .box-page div:nth-child(8) {
+        animation: a1 4s ease-in-out infinite;
+        animation-delay: 1.4s;
+      }
+      .box-page div:nth-child(9) {
+        animation: a1 4s ease-in-out infinite;
+        animation-delay: 1.6s;
+      }
+
+      @keyframes a1 {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        20% {
+          transform: translate3d(900px, 900px, 900px) rotateX(360deg)
+            rotateY(360deg);
+        }
+        40% {
+          transform: translate3d(0, 0, 0);
+        }
+        300% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function () {
+        var items = document.querySelectorAll(".box-page");
+        for (var i = 0; i < items.length; i++) {
+          for (var r = 0; r < 3; r++) {
+            for (var c = 0; c < 3; c++) {
+              var divs = document.createElement("div");
+              divs.style.cssText =
+                "width:300px; height:300px; border:2px solid #fff; box-sizing:border-box;" +
+                "position:absolute; border-radius:10px; ";
+              divs.style.backgroundImage = "url(1.jpg)";
+              items[i].appendChild(divs);
+              divs.style.left = 300 * c + "px";
+              divs.style.top = 300 * r + "px";
+              divs.style.backgroundPositionX = -300 * c + "px";
+              divs.style.backgroundPositionY = -300 * r + "px";
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="box-page top"></div>
+        <div class="box-page left"></div>
+        <div class="box-page bottom"></div>
+        <div class="box-page right"></div>
+        <div class="box-page before"></div>
+        <div class="box-page after"></div>
+      </div>
+    </div>
+  </body>
+</html>
