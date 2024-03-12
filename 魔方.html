@@ -16,7 +16,7 @@
         width: 900px;
         height: 900px;
         margin: 150px auto;
-        perspective: none;
+        perspective: 2000000px;
       }
       .box {
         width: 900px;
@@ -105,7 +105,7 @@
         40% {
           transform: translate3d(0, 0, 0);
         }
-        300% {
+        100% {
           transform: translate3d(0, 0, 0);
         }
       }
@@ -121,6 +121,7 @@
                 "width:300px; height:300px; border:2px solid #fff; box-sizing:border-box;" +
                 "position:absolute; border-radius:10px; ";
               divs.style.backgroundImage = "url(1.jpg)";
+              divs.style.backgroundSize = "100% 100%";
               items[i].appendChild(divs);
               divs.style.left = 300 * c + "px";
               divs.style.top = 300 * r + "px";
